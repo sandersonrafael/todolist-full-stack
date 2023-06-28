@@ -52,16 +52,20 @@
   margin: 2px;
 }
 
-.btn-action:nth-child(1) {
+.btn-edit {
   background-color: orange;
   &:hover {
     opacity: 0.9;
   }
 }
 
-.btn-action:nth-child(2) {
+.btn-delete {
   background-color: rgba(237, 42, 42, 0.9);
   &:hover {
     opacity: 0.9;
   }
+}
+
+.btn-confirm {
+  background-color: rgb(30, 209, 30);
 }

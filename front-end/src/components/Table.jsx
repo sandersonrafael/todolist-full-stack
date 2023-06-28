@@ -1,9 +1,14 @@
-import React from 'react';
-import { MdOutlineEdit, MdDelete } from 'react-icons/md';
+import React, { useEffect, useContext } from 'react';
+import TableTasks from './TableTasks';
+import ContentContext from '../context/ContentContext';
 
 import './Table.css';
 
 export default function Table() {
+  const { taskList, loadDbTasks } = useContext(ContentContext);
+
+  useEffect(() => loadDbTasks, []);
+
   return (
     <table className="table">
       <thead>
@@ -16,25 +21,7 @@ export default function Table() {
       </thead>
 
       <tbody>
-        <tr>
-          <td>Fazer compras</td>
-          <td>27/06/2023</td>
-          <td>
-            <select>
-              <option value="pendente">Pendente</option>
-              <option value="iniciada">Iniciado</option>
-              <option value="concluido">Concluído</option>
-            </select>
-          </td>
-          <td className="form--actions">
-            <button className="btn-action">
-              <MdOutlineEdit />
-            </button>
-            <button className="btn-action">
-              <MdDelete />
-            </button>
-          </td>
-        </tr>
+        { taskList.map((task) => <TableTasks key={task.id} task={task}/>)}
       </tbody>
     </table>
   );
