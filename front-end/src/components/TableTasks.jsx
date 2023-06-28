@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { MdOutlineEdit, MdDelete, MdCheck } from 'react-icons/md';
 import ContentContext from '../context/ContentContext';
 import { deleteTask, editTask } from '../api/dbInteract';
+import formatDate from '../utils/formatDate';
 
 import PropTypes from 'prop-types';
 
@@ -48,7 +49,7 @@ export default function TableTasks({ task }) {
           title
         )}
       </td>
-      <td>{created_at}</td>
+      <td>{formatDate(created_at)}</td>
       <td>
         <select
           defaultValue={status}
